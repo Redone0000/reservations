@@ -5,6 +5,10 @@
 @section('content')
     <div class="container">
         <h1>Liste des artistes</h1>
+        <ul>
+            <li><a href="{{ route('artist.create') }}">Ajouter</a></li>    
+        </ul>
+
         <table class="table">
             <thead>
                 <tr>
