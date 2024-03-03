@@ -6,10 +6,11 @@
     <div class="container">
         @if($artist)
             <h1>{{ $artist->firstname }} {{ $artist->lastname }}</h1>
-            <nav><a href="{{ route('artists.index') }}">Retour à l'index</a></nav>
+            <div><a href="{{ route('artist.edit' ,$artist->id) }}" >Modifier</a></div>
+            <nav><a href="{{ route('artist.index') }}">Retour à l'index</a></nav>
         @else
             <p>Aucun artiste trouvé.</p>
-            <nav><a href="{{ route('artists.index') }}">Retour à l'index</a></nav>
+            <nav><a href="{{ route('artist.index') }}">Retour à l'index</a></nav>
         @endif
     </div>
 @endsection
