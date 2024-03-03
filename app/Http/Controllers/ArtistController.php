@@ -24,7 +24,7 @@ class ArtistController extends Controller
     {
         try {
             $artists = Artist::all();
-            return view('artist.index', ['artists' => $artists]);
+            return view('artist.index', ['artists' => $artists, 'ressource' => 'artistes']);
         } catch (ModelNotFoundException $e) {
             // Afficher le message d'erreur
             dd($e->getMessage());
