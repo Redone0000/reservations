@@ -3,8 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
-// Assurez-vous que vous n'avez pas d'importation incorrecte pour Gate dans ce fichier
 use App\Http\Controllers\Gate;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\LocalityController;
+use App\Http\Controllers\RoleController;
+
 
 
 /*
@@ -36,6 +39,26 @@ Route::put('/artist/{id}', [ArtistController::class, 'update'])
 	->where('id', '[0-9]+')->name('artist.update');
 Route::delete('/artist/{id}', [ArtistController::class, 'destroy'])
 	->where('id', '[0-9]+')->name('artist.delete');
+
+
+
+Route::get('/type', [TypeController::class, 'index'])
+    ->name('type.index');
+Route::get('/type/{id}', [TypeController::class, 'show'])
+	->where('id', '[0-9]+')->name('type.show');
+
+Route::get('/locality', [LocalityController::class, 'index'])
+    ->name('locality.index');
+Route::get('/locality/{id}', [LocalityController::class, 'show'])
+    ->where('id', '[0-9]+')->name('locality.show');
+
+Route::get('/role', [RoleController::class, 'index'])
+    ->name('role.index');
+Route::get('/role/{id}', [RoleController::class, 'show'])
+    ->where('id', '[0-9]+')->name('role.show');
+    
+    
+
 
 
 
