@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Artist;
+use Illuminate\Support\Facades\Gate;
+
+
 
 
 class ArtistController extends Controller
@@ -11,15 +14,7 @@ class ArtistController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    //     $artists = Artist::all();
-        
-    //     return view('artist.index',[
-    //         'artists' => $artists,
-    //         'resource' => 'artistes',
-    //     ]);
-    // }
+
     public function index()
     {
         try {
@@ -35,7 +30,11 @@ class ArtistController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
+        if (!Gate::allows('create-artist')) {
+            abort(403);
+        }
+
         return view('artist.create');
     }
 
@@ -78,9 +77,9 @@ class ArtistController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+
         $artist = Artist::find($id);
         
         return view('artist.edit',[
@@ -115,7 +114,11 @@ class ArtistController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
+    {   
+        if (!Gate::allows('delete-artist')) {
+            abort(403);
+        }
+
         $artist = Artist::find($id);
 
         if($artist) {

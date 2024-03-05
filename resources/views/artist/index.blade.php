@@ -1,14 +1,17 @@
 <!-- resources/views/artist/index.blade.php -->
 
-@extends('layouts.app') 
+@extends('layouts.main') 
 
 @section('content')
     <div class="container">
         <h1>Liste des artistes</h1>
-        <ul>
-            <li><a href="{{ route('artist.create') }}">Ajouter</a></li>    
-        </ul>
-
+        <!-- <ul>
+            <li><a href="{{ route('artist.create') }}" class="btn btn-primary">Ajouter</a></li>    
+        </ul> -->
+        <div class="mb-3">
+            <a href="{{ route('artist.create') }}" class="btn btn-primary">Ajouter</a>
+        </div>
+        
         <table class="table">
             <thead>
                 <tr>
