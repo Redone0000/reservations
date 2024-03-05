@@ -9,9 +9,18 @@ class Locality extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['locality'];
+    protected $fillable = ['postal_code', 'locality'];
 
     protected $table = 'localities';
 
     public $timestamps = false;
+
+    /**
+     * Get the locations for the locality.
+     */
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
+
 }

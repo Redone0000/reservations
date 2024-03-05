@@ -15,15 +15,19 @@ class LocalitySeeder extends Seeder
     public function run(): void
     {
         // Supprimez toutes les données existantes dans la table
+        
+        //Empty the table first
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Locality::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         // Définissez les données que vous souhaitez insérer dans la table
         $localities = [
-            ['locality' => 'Bruxelles-Ville'],
-            ['locality' => 'Schaerbeek'],
-            ['locality' => 'Ixelles'],
-            ['locality' => 'Saint-Gilles'],
-            ['locality' => 'Anderlecht'],
+            ['locality' => 'Bruxelles-Ville','postal_code' => '1000'],
+            ['locality' => 'Schaerbeek', 'postal_code' => '1000'],
+            ['locality' => 'Ixelles', 'postal_code' => '1000'],
+            ['locality' => 'Saint-Gilles', 'postal_code' => '1000'],
+            ['locality' => 'Watermael-Boitsfort', 'postal_code' => '1170'],
         ];
 
         //Insert data in the table

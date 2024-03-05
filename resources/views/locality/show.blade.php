@@ -3,6 +3,13 @@
 @section('title', 'Fiche d\'un type')
 
 @section('content')
-    <h1>{{ ucfirst($locality->locality) }}</h1>
-    <nav><a href="{{ route('locality.index') }}">Retour à l'index</a></nav>
+    <h1>{{ $locality->postal_code }} {{ $locality->locality }}</h1>
+    <ul class="list-group">
+    @foreach($locality->locations as $location)
+        <li class="list-group-item">{{ $location->designation }}</li>
+    @endforeach
+    </ul>
+    <div class="mt-3">
+        <nav><a href="{{ route('locality.index') }}">Retour à l'index</a></nav>
+    </div>
 @endsection
