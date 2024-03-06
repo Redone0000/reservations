@@ -18,6 +18,11 @@
             <p>Aucun artiste trouvé.</p>
             <nav><a href="{{ route('artist.index') }}">Retour à l'index</a></nav>
         @endif
+        <h2>Liste des types</h2>
+    <ul class="list-group">
+    @foreach($artist->types as $type)
+        <li class="list-group-item">{{ $type->type }}</li>
+    @endforeach
+    </ul>
     </div>
 @endsection
-
