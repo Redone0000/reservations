@@ -15,4 +15,11 @@ class Type extends Model
 
     public $timestamps = false;
 
+        /**
+     * The artists that are defined by the type.
+     */
+    public function artists()
+    {
+        return $this->belongsToMany(Artist::class);
+    }
 }

@@ -7,16 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Artist;
 
-// class ArtistSeeder extends Seeder
-// {
-//     /**
-//      * Run the database seeds.
-//      */
-//     public function run(): void
-//     {
-//         //
-//     }
-// }
+
 class ArtistSeeder extends Seeder{
     /**
      * Run the database seeds.
@@ -26,7 +17,9 @@ class ArtistSeeder extends Seeder{
     public function run()
     {
         //Empty the table first
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         Artist::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
         
         //Define data
        $artists = [
@@ -41,6 +34,8 @@ class ArtistSeeder extends Seeder{
             ['firstname'=>'Guillaume','lastname'=>'Alexandre'],
             ['firstname'=>'Claude','lastname'=>'Semal'],
             ['firstname'=>'Laurence','lastname'=>'Warin'],
+            ['firstname'=>'Pierre','lastname'=>'Wayburn'],
+            ['firstname'=>'Gwendoline','lastname'=>'Gauthier'],
         ];
         
         //Insert data in the table

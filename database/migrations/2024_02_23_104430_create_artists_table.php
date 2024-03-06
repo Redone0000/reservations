@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('firstname')->length(30); // length 30
             $table->string('lastname',30); // Length 30 autre facon
-
         });
     }
 

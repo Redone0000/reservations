@@ -66,7 +66,7 @@ class LocationSeeder extends Seeder
             unset($data['locality_postal_code']);
             $data['slug'] = Str::slug($data['designation'],'-');
 
-                $data['locality_id'] = $locality->id; // Référence à la table localities
+                $data['locality_id'] = $locality->id;
 
         }
 

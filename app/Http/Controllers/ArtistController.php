@@ -7,8 +7,6 @@ use App\Models\Artist;
 use Illuminate\Support\Facades\Gate;
 
 
-
-
 class ArtistController extends Controller
 {
     /**

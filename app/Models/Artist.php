@@ -14,6 +14,15 @@ class Artist extends Model
         'lastname',
     ];
 
+    public $table = 'artists';
     public $timestamps = false;
+
+        /**
+     * The types that belong to the artist.
+     */
+    public function types()
+    {
+        return $this->belongsToMany(Type::class);
+    }
 
 }
