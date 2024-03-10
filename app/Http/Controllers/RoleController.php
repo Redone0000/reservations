@@ -52,7 +52,12 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $role = Role::find($id);
+        
+        return view('role.edit',[
+            'role' => $role,
+        ]);
+
     }
 
     /**
@@ -60,7 +65,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'role' => 'required|max:30',
+        ]);
+
+	   //Le formulaire a été validé, nous récupérons l’artiste à modifier
+        $role = Role::find($id);
+
+	   //Mise à jour des données modifiées et sauvegarde dans la base de données
+        $role->update($validated);
+
+        return view('role.show',[
+            'role' => $role,
+        ]);
     }
 
     /**
