@@ -26,7 +26,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('type.create');
     }
 
     /**
@@ -34,7 +34,17 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'type' => 'required|max:60',
+        ]);
+
+        $type = new Type();
+
+        $type->type = $validated['type'];
+
+        $type->save();
+
+        return redirect()->route('type.index');
     }
 
     /**
@@ -87,6 +97,12 @@ class TypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $type = Type::find($id);
+
+        if($type) {
+            $type->delete();
+        }
+
+        return redirect()->route('type.index');
     }
 }

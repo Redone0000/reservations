@@ -25,7 +25,7 @@ class LocalityController extends Controller
      */
     public function create()
     {
-        //
+        return view('locality.create');
     }
 
     /**
@@ -33,7 +33,19 @@ class LocalityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'postal_code' => 'required|max:6',
+            'locality' => 'required|max:60',
+        ]);
+
+        $locality = new Locality();
+
+        $locality->postal_code = $validated['postal_code'];
+        $locality->locality = $validated['locality'];
+
+        $locality->save();
+
+        return redirect()->route('locality.index');
     }
 
     /**
@@ -87,6 +99,12 @@ class LocalityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $locality = Locality::find($id);
+
+        if($locality) {
+            $locality->delete();
+        }
+
+        return redirect()->route('locality.index');
     }
 }

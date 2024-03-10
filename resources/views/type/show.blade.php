@@ -5,6 +5,11 @@
 @section('content')
     <h1>{{ ucfirst($type->type) }}</h1>
     <div><a href="{{ route('type.edit' ,$type->id) }}" >Modifier</a></div>
+    <form method="post" action="{{ route('type.delete', $type->id) }}">
+        @csrf
+        @method('DELETE')
+        <button>Supprimer</button>
+    </form>
     <h2>Liste des artistes</h2>
     <ul class="list-group">
     @foreach($type->artists as $artist)    

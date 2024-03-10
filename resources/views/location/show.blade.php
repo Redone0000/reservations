@@ -31,6 +31,11 @@
         @endforeach
         </ul>
     </article>
-
-    <nav><a href="{{ route('location_index') }}">Retour à l'index</a></nav>
+    <div><a href="{{ route('location.edit' ,$location->id) }}" >Modifier</a></div>
+    <form method="post" action="{{ route('location.delete', $location->id) }}">
+                @csrf
+                @method('DELETE')
+                <button>Supprimer</button>
+            </form>
+    <nav><a href="{{ route('location.index') }}">Retour à l'index</a></nav>
 @endsection
