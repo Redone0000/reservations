@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //$table->string('name', 60)->change();	//Ne fonctionne pas avec ENUM
-            $table->renameColumn('name', 'firstname');
+        
 
-            $table->string('lastname', 60)->after('name');
+            $table->string('firstname', 60);
+            $table->string('lastname', 60);
             $table->string('login', 30)->after('id')->default('');
             $table->string('langue', 2);
             $table->enum('role', ['admin','member',])
                 ->default('member');
-
+            $table->timestamps();
             $table->unique('login', 'users_login_unique');
         });
 
