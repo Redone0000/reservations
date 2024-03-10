@@ -50,4 +50,9 @@ class User extends Authenticatable
     function roles() {
         return $this->belongsToMany(Role::class);
     }
+
+    public function representations()
+    {
+        return $this->belongsToMany(Representation::class);
+    }
 }
